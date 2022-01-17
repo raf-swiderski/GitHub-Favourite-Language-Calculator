@@ -15,7 +15,7 @@ const button = document.querySelector('button');
 
 
 const body = document.body;
-body.append('/')
+
 
 async function displayFavLanguage() {
     
@@ -37,27 +37,43 @@ function showAsPercentage(repos) {
 
     //isolate languages into its own array
     var languages = [];
-    for (let i = 0; i < repos.length; i++) { languages.push(repos[i].language) }
+    for (let i = 0; i < repos.length; i++) { languages.push(repos[i].language) } 
     languages = languages.filter(word => word != null) //filters out values === null 
+    // => [ HTML, HTML, Javascript, Javascript, Javascript ]
     
+    // retrieve the individual languages 
+    const uniqueSet = new Set(languages);
+    const uniqLanguages = [...uniqueSet] 
+    // => [ HTML, JavaScript, Ruby ]
     
-    // trying to count each of the languages. 
-    
-    // then convert to percentages
-    
-    // display them. 
-    
-    var counter = {}
-    
-    languages.sort();
-    console.log(languages)
+
+    // counting the languages
+    var counter = []
+    for (let i = 0; i < uniqLanguages.length; i++) { 
+
+        let occurences = languages.filter((language) => {return language === uniqLanguages[i]}).length 
+
+        counter.push({ language: uniqLanguages[i], occurences: occurences })
+
+    }
+
+    // body.append(counter)
+    console.log(counter)
+
+    const languageDiv = document.getElementById("languages")
 
 
-    // const test = languages.match(/Ruby/gi);
+    const display = []
 
-    // console.log(test)
+    counter.forEach(object => {
+        display.push('<p>')
+        display.push(
+            `${object.language} occurs ${object.occurences} times`
+        )
+        display.push('</p>')
+    });
 
-
+    languageDiv.innerHTML = display.join('');
     
 
 
