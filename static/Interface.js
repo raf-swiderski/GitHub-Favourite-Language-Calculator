@@ -5,47 +5,33 @@ const button = document.querySelector('button');
 
 const body = document.body;
 
-
-async function displayFavLanguages() {
-    
-    const data = await getUserRepos(username)
-    .then( (data) => {
-        showData(data);
-    })
-}
-
 button.addEventListener('click', () => {
     displayFavLanguages();
 });
 
+async function displayFavLanguages() {
+    
+    const data = await getUserRepos(username)
+    .then( (repos) => {
+        displayLanguages(repos);
+    })
+}
 
-function showData(repos) {
 
+
+function displayLanguages(repos) {
+    
     //isolate languages into its own array
-    var languages = []
-    var counter = []
+    var languages = isolateLanguages(repos)
 
-    for (let i = 0; i < repos.length; i++) { languages.push(repos[i].language) } 
-    languages = languages.filter(word => word != null) //filters out values === null 
-    
-    // retrieve the individual languages 
-    const uniqueSet = new Set(languages);
-    const uniqLanguages = [...uniqueSet] // => [ HTML, JavaScript, Ruby ]
-    
     // counting the languages
+    var languagesCount = countLanguages(languages)
+
     
-    for (let i = 0; i < uniqLanguages.length; i++) { 
-
-        let occurences = languages.filter((language) => {return language === uniqLanguages[i]}).length 
-
-        counter.push({ language: uniqLanguages[i], occurences: occurences })
-
-    }
-
     const languageDiv = document.getElementById("languages")
     const display = []
 
-    counter.forEach(object => {
+    languagesCount.forEach(object => {
         display.push('<p>')
         display.push(
             `${object.language} occurs ${object.occurences} times`
@@ -55,6 +41,30 @@ function showData(repos) {
 
     languageDiv.innerHTML = display.join('');
     
-
-
 }
+
+function isolateLanguages(repos) {
+    var languages = []
+    for (let i = 0; i < repos.length; i++) { languages.push(repos[i].language) } 
+    languages = languages.filter(word => word != null) 
+    // filters out null values 
+    return languages
+}
+
+
+function countLanguages(languages) {  
+    var counter = []
+
+    // retrieve the language types
+    const uniqueSet = new Set(languages);
+    const uniqLanguages = [...uniqueSet] // => [ HTML, JavaScript, Ruby ]
+
+    for (let i = 0; i < uniqLanguages.length; i++) { 
+
+        let occurences = languages.filter((language) => {return language === uniqLanguages[i]}).length 
+
+        counter.push({ language: uniqLanguages[i], occurences: occurences })
+
+    }
+    return counter
+}   
