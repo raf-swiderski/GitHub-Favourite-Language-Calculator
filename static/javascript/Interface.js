@@ -8,31 +8,39 @@ button.addEventListener('click', () => {
 async function displayFavLanguages(username) {
     const data = await getUserRepos(username)
     .then( (repos) => {
-        displayLanguages(repos);
+
+        //isolate languages into its own array
+        var languages = isolateLanguages(repos);
+
+        // counting the occrences & percentages of the languages
+        var languagesObject = countLanguages(languages);
+
+        // send to document
+        sendLanguagesToDocument(languagesObject);
+        
     })
 }
 
-function displayLanguages(repos) {
-    //isolate languages into its own array
-    var languages = isolateLanguages(repos);
 
-    // counting the languages
-    var languagesCount = countLanguages(languages);
-    // send to document
-    sendLanguagesToDocument(languagesCount);
-}
+function sendLanguagesToDocument(languagesObject) {
+    var languageDiv = document.getElementById("languages")
+    var display = []
 
-function sendLanguagesToDocument(languagesCount) {
-    const languageDiv = document.getElementById("languages")
-    const display = []
+    display.push(
+        `${languagesObject[0].language} is ${username.value}'s favourite language!`
+    )
 
-    languagesCount.forEach(object => {
+  
+
+    languagesObject.forEach(object => {
         display.push('<p>')
         display.push(
-            `${object.language} - ${object.occurences} repositories`
+            `${object.language} - ${object.occurences} repositories (${object.percentage}%)`
         )
         display.push('</p>')
     });
+
+
 
     languageDiv.innerHTML = display.join('');
 }

@@ -8,15 +8,19 @@ function isolateLanguages(repos) {
 
 
 function countLanguages(languages) {  
-    var counter = []
+    var languagesObject = []
 
-    // retrieve the language types
+    // retrieve the different language types
     const uniqueSet = new Set(languages);
     const uniqLanguages = [...uniqueSet] // => [ HTML, JavaScript, Ruby ]
 
+ 
     for (let i = 0; i < uniqLanguages.length; i++) { 
         let occurences = languages.filter((language) => {return language === uniqLanguages[i]}).length 
-        counter.push({ language: uniqLanguages[i], occurences: occurences })
+        let percentage = occurences * 100 / languages.length
+
+        languagesObject.push({ language: uniqLanguages[i], occurences: occurences, percentage: percentage })
     }
-    return counter
+
+    return languagesObject
 }   
