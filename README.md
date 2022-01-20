@@ -18,6 +18,11 @@ Start by cloning this repository:
 git@github.com:raf-swiderski/GitHub-Favourite-Language-Calculator.git
 ```
 
+Install the dependencies:
+```
+cd GitHub-Favourite-Language-Calculator
+npm install
+```
 
 
 
