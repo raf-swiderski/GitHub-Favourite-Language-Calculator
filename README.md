@@ -18,11 +18,13 @@ Start by cloning this repository:
 git@github.com:raf-swiderski/GitHub-Favourite-Language-Calculator.git
 ```
 
-Install the dependencies:
+To run the program in your browser:
 ```
 cd GitHub-Favourite-Language-Calculator
-npm install
+open static/index.html
 ```
+
+
 
 
 
