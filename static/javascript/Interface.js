@@ -15,6 +15,9 @@ async function displayFavLanguages(username) {
         // counting the occrences & percentages of the languages
         var languagesObject = countLanguages(languages);
 
+        // sort object by occurences
+        languagesObject = sortByFavourite(languagesObject)
+
         // send to document
         sendLanguagesToDocument(languagesObject);
         

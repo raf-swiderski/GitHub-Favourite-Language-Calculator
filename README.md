@@ -6,7 +6,7 @@ Enter any GitHub username and you will be provided with a list of that user's fa
 
 ## Tech Stack
 
-Node.js, Express & standard Javascript
+Node.js, standard Javascript
 
 ## Getting started
 
