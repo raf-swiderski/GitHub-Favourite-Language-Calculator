@@ -6,20 +6,26 @@ Enter any GitHub username and you will be provided with a list of that user's fa
 
 ## Tech Stack
 
-Standard Javascript
+Node.js, Express framework, Standard Javascript/HTML/CSS
 
 ## Getting started
 
-Start by cloning this repository:
+To clone this repository, run this command in your terminal:
 ```
 git clone git@github.com:raf-swiderski/GitHub-Favourite-Language-Calculator.git
 ```
 
-To open the program in your browser, run these commands in your terminal:
+Next, install the dependencies:
 ```
 cd GitHub-Favourite-Language-Calculator
-open static/index.html
+npm install
 ```
+
+To open the program in your browser:
+```
+node app.js
+```
+Then visit the URL localhost:3000 in your browser and hey presto:
 
 <img width="668" alt="Screenshot 2022-01-20 at 12 58 42" src="https://user-images.githubusercontent.com/76166627/150343354-1550edf3-fba9-45db-b742-fbe13048fea2.png">
 
