@@ -23,7 +23,7 @@ npm install
 
 To open the program in your browser:
 ```
-node app.js
+npm run start
 ```
 Then visit the URL localhost:3000 in your browser and hey presto:
 
