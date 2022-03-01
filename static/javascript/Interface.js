@@ -6,8 +6,9 @@ button.addEventListener('click', () => {
 });
 
 async function displayFavLanguages(username) {
-    const data = await getUserRepos(username)
+    const response = await getUserRepos(username)
     .then( (repos) => {
+
 
         //isolate languages into its own array
         var languages = isolateLanguages(repos);
@@ -44,6 +45,6 @@ function sendLanguagesToDocument(languagesObject) {
     });
 
 
-
+    languageDiv.innerHTML = ""
     languageDiv.innerHTML = display.join('');
 }
