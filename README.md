@@ -10,6 +10,8 @@ Node.js, Express framework, Standard Javascript/HTML/CSS
 
 ## Getting started
 
+To visit the deployed app go to: github-favourite-language.herokuapp.com/
+
 To clone this repository, run this command in your terminal:
 ```
 git clone git@github.com:raf-swiderski/GitHub-Favourite-Language-Calculator.git
